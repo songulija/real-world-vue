@@ -1,14 +1,18 @@
 <template>
   <div>
     <h1>Events Listing</h1>
-    <!-- link to dynamic route. site/event/:id. sending $route.params 'id' as prop
-    for component to access it easier -->
-    <router-link v-bind:to="{ name: 'event-show', params: { id: 1 } }"
-      >Show event 1</router-link
-    >
+    <EventCard />
+    <BaseIcon />
   </div>
 </template>
 <script>
-export default {}
+import EventCard from '@/components/EventCard.vue'
+export default {
+  // defining imported components in 'components'. basically registering
+  // components as child(this component child), allows to use it in template
+  components: {
+    EventCard,
+  },
+}
 </script>
 <style scoped></style>
