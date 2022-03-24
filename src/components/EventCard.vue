@@ -8,7 +8,7 @@
     <!-- -shadwo style is global one -->
     <div class="event-card -shadow">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
-      <h4 class="title">{{ title }}</h4>
+      <h4 class="title">{{ event.title }}</h4>
       <BaseIcon name="users">
         <span slot="slotDescription"
           >{{ event.attendees.length }} attending</span
@@ -22,19 +22,11 @@
 // allows to export this component as Js module. so i can import it
 export default {
   name: 'event-card',
-  data() {
-    return {
-      event: {
-        id: 1,
-        title: 'Park Cleanup',
-        date: 'Tue Aug 19, 2018',
-        time: '6:00',
-        attendees: [
-          { id: 'abc1', name: 'Adam Joh' },
-          { id: 'abc2', name: 'Lukas Lans' },
-        ],
-      },
-    }
+  props: {
+    event: {
+      type: Object,
+      required: true,
+    },
   },
 }
 </script>
