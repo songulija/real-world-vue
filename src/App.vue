@@ -3,9 +3,15 @@
     <!-- this nav will be in all pages. -->
     <nav>
       <!-- router-link redirects us to pages,
-      we can redirect by routes names that i want to redirect to other page  -->
-      <router-link :to="{ name: 'home' }">Home</router-link> |
-      <router-link :to="{ name: 'about' }">About</router-link>
+      we can redirect by routes names that i want to redirect to other page
+      binding to attribute to this  -->
+      <router-link :to="{ name: 'event-list' }">List</router-link> |
+      <router-link v-bind:to="{ name: 'event-create' }">Create</router-link> |
+      <!-- link to dynamic route. site/user/:username. sending $route.params 'username' as prop
+    for component to access it easier -->
+      <router-link v-bind:to="{ name: 'user', params: { username: 'Lukas' } }"
+        >Lukas page</router-link
+      >
     </nav>
     <!-- router-view is placeholder which renders matched component(that is clicked)
      when user clicks 'about' link, it will load AboutView component in
