@@ -1,9 +1,15 @@
 <template>
   <div id="app">
+    <!-- this nav will be in all pages. -->
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <!-- router-link redirects us to pages,
+      we can redirect by routes names that i want to redirect to other page  -->
+      <router-link :to="{ name: 'home' }">Home</router-link> |
+      <router-link :to="{ name: 'about' }">About</router-link>
     </nav>
+    <!-- router-view is placeholder which renders matched component(that is clicked)
+     when user clicks 'about' link, it will load AboutView component in
+     router view place-->
     <router-view />
   </div>
 </template>
