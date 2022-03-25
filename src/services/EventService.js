@@ -12,4 +12,8 @@ export default {
   getEvent(id) {
     return apiClient.get('/events/' + id)
   },
+  postEvent(event) {
+    // add new event obj to json file
+    return apiClient.post('/events', event)
+  },
 }

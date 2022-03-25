@@ -44,6 +44,7 @@ export default {
   created() {
     EventService.getEvent(this.id)
       .then((response) => {
+        console.log(response.data)
         this.event = response.data
       })
       .catch((error) => {

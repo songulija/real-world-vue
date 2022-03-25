@@ -11,7 +11,7 @@
       <h4 class="title">{{ event.title }}</h4>
       <BaseIcon name="users">
         <span slot="slotDescription"
-          >{{ event.attendees.length }} attending</span
+          >{{ event.attendees ? event.attendees.length : 0 }} attending</span
         >
       </BaseIcon>
     </div>

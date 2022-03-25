@@ -50,6 +50,7 @@ Vue.config.productionTip = false
 // and telling to render our app App component
 // and mount it where this id 'app' is
 // we're using es6, so router:router & store:store
+// so basically all components can access store
 new Vue({
   router,
   store,

@@ -71,6 +71,34 @@
           "name": "Mary Gordon"
         }
       ]
+    },
+    {
+      "id": 7001545,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
+      "title": "Working",
+      "description": "yeyey",
+      "location": "Vilnius",
+      "date": "2022-03-10T06:40:00.000Z",
+      "time": "17:00",
+      "attendees": []
+    },
+    {
+      "id": 5694010,
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
+      "title": "Nature is",
+      "description": "Yeyeyey",
+      "location": "Vilnius, Lithuania",
+      "date": "2022-03-02T06:49:00.000Z",
+      "time": "14:00",
+      "attendees": []
     }
   ]
 }
