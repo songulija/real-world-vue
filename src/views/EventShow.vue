@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   props: {
     id: {
@@ -38,12 +38,18 @@ export default {
   },
   computed: {
     ...mapState({
-      event: (state) => state.event,
+      // first i refering to 'event' module, then accessing event state
+      event: (state) => state.event.event,
     }),
   },
   created() {
     // dispatching 'fetchEvent' action and passing id for it
-    this.$store.dispatch('fetchEvent', this.id)
+    // with help of mapActions we dont need to dispatch action here
+    this.fetchEvent(this.id)
+  },
+  methods: {
+    // first is namespace 'event' that is needed. and second prop is array of actions to map that there are
+    ...mapActions('event', ['fetchEvent']),
   },
 }
 </script>

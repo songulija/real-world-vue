@@ -100,7 +100,7 @@ export default {
       console.log(this.event)
       // waiting for the response to return in dispatcher. using then
       this.$store
-        .dispatch('createEvent', this.event)
+        .dispatch('event/createEvent', this.event)
         .then(() => {
           // redirect to 'event' that just created. using router push
           // to specified route name & providing id to params
@@ -112,7 +112,7 @@ export default {
           this.event = this.createFreshEventObject()
         })
         .catch(() => {
-          console.log('Ther is problem creating creating you event')
+          //now we wont push to new route or clear form.
         })
       // only if succesful
       this.event = this.createFreshEventObject()
