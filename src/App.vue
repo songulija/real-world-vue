@@ -3,8 +3,9 @@
     <NavBar />
     <!-- router-view is placeholder which renders matched component(that is clicked)
      when user clicks 'about' link, it will load AboutView component in
-     router view place-->
-    <router-view />
+     router view place. key="$route.fullPath" is to reaload components when URL changes
+      including parameters-->
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 <script>

@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import EventService from '@/services/EventService'
+import { mapState } from 'vuex'
 export default {
   props: {
     id: {
@@ -36,20 +36,14 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      event: {},
-    }
+  computed: {
+    ...mapState({
+      event: (state) => state.event,
+    }),
   },
   created() {
-    EventService.getEvent(this.id)
-      .then((response) => {
-        console.log(response.data)
-        this.event = response.data
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
+    // dispatching 'fetchEvent' action and passing id for it
+    this.$store.dispatch('fetchEvent', this.id)
   },
 }
 </script>

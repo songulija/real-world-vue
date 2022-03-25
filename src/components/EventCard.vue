@@ -15,8 +15,7 @@
         >
       </BaseIcon>
     </div>
-    Show event 1</router-link
-  >
+  </router-link>
 </template>
 <script>
 // allows to export this component as Js module. so i can import it
