@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import EventService from '@/services/EventService'
+// importing all public items into user namescpace. like user.state, user.actions and so on.
+import * as user from '@/store/modules/user'
 
 // telling vue to use Vuex
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  // telling vue to use user module. that has its own state,actions,getters,mutations
+  modules: {
+    user,
+  },
   state: {
-    //adding user state to vuex global state
-    user: { id: 'abc123', name: 'Lukas Songulija' },
     categories: [
       'sustainability',
       'nature',
@@ -109,5 +113,4 @@ export default new Vuex.Store({
       }
     },
   },
-  modules: {},
 })

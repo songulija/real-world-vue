@@ -80,7 +80,8 @@ export default {
   },
   methods: {
     createFreshEventObject() {
-      const user = this.$store.state.user
+      // first value reference user module and second is accessing user state
+      const user = this.$store.state.user.user
       const id = Math.floor(Math.random() * 10000000)
       return {
         id: id,

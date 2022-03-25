@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Events Listing</h1>
+    <!-- acessing user name. first value 'user' is module name and second is state inside the module -->
+    <h1>Events for {{ user.user.name }}</h1>
     <!-- loop through events array, add EventCard components, pass event as props -->
     <EventCard v-for="event in events" :key="event.id" v-bind:event="event" />
     <!-- to create link that will go into our 'event-list' previous page we need to
@@ -53,6 +54,7 @@ export default {
     ...mapState({
       events: (state) => state.events,
       eventsTotal: (state) => state.eventsTotal,
+      user: (state) => state.user,
     }),
   },
 }
