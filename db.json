@@ -7,7 +7,10 @@
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "sustainability",
       "attendees": [
         {
@@ -35,7 +38,10 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "nature",
       "attendees": [
         {
@@ -55,7 +61,10 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "Help animals find new homes.",
-      "organizer": "Gregg Pollack",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "animal welfare",
       "attendees": [
         {
@@ -107,7 +116,10 @@
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "sustainability",
       "attendees": [
         {
@@ -135,7 +147,10 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "nature",
       "attendees": [
         {
@@ -155,7 +170,10 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "Help animals find new homes.",
-      "organizer": "Gregg Pollack",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas Songulija"
+      },
       "category": "animal welfare",
       "attendees": [
         {
@@ -198,6 +216,76 @@
       "location": "Vilnius, Lithuania",
       "date": "2022-03-02T06:49:00.000Z",
       "time": "14:00",
+      "attendees": []
+    },
+    {
+      "id": 6124465,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas"
+      },
+      "title": "SUCCESS",
+      "description": "dsd",
+      "location": "Vilnius",
+      "date": "2022-03-11T13:06:00.000Z",
+      "time": "8:00",
+      "attendees": []
+    },
+    {
+      "id": 7305273,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas"
+      },
+      "title": "SUCCESS 2",
+      "description": "SDS",
+      "location": "Lithuania",
+      "date": "2022-09-02T13:09:00.000Z",
+      "time": "19:00",
+      "attendees": []
+    },
+    {
+      "id": 6222011,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas"
+      },
+      "title": "TRYING",
+      "description": "RWEW",
+      "location": "WEW",
+      "date": "2022-03-03T13:11:00.000Z",
+      "time": "20:00",
+      "attendees": []
+    },
+    {
+      "id": 1379739,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas"
+      },
+      "title": "wewew",
+      "description": "wew",
+      "location": "we",
+      "date": "2022-03-01T13:32:00.000Z",
+      "time": "21:00",
+      "attendees": []
+    },
+    {
+      "id": 4414957,
+      "category": "animal welfare",
+      "organizer": {
+        "id": "abc123",
+        "name": "Lukas"
+      },
+      "title": "Test 3",
+      "description": "sds",
+      "location": "Vilnius",
+      "date": "2022-03-10T13:35:00.000Z",
+      "time": "19:00",
       "attendees": []
     }
   ]

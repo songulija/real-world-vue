@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <NavBar />
+    <!-- notificationContainer holds all notifications -->
+    <NotificationContainer />
     <!-- router-view is placeholder which renders matched component(that is clicked)
      when user clicks 'about' link, it will load AboutView component in
      router view place. key="$route.fullPath" is to reaload components when URL changes
@@ -10,10 +12,12 @@
 </template>
 <script>
 import NavBar from './components/NavBar.vue'
+import NotificationContainer from '@/components/NotificationContainer.vue'
 export default {
   // define component in 'components' basically registering as child components
   components: {
     NavBar,
+    NotificationContainer,
   },
 }
 </script>

@@ -108,14 +108,11 @@ export default {
             name: 'event-show',
             params: { id: this.event.id },
           })
-          // clear event when action response that its succesfully added
           this.event = this.createFreshEventObject()
         })
         .catch(() => {
           //now we wont push to new route or clear form.
         })
-      // only if succesful
-      this.event = this.createFreshEventObject()
     },
   },
 }

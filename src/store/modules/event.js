@@ -30,9 +30,9 @@ export const mutations = {
 export const actions = {
   // createEvent will take in commit,rootState,dispatch from context
   //i can import dispatch, and rootState(access whole state, modules)
-  createEvent({ commit, rootState, dispatch }, event) {
+  createEvent({ commit, dispatch }, event) {
     // access global state. refering to user module, state
-    console.log('User creating event is:' + rootState.user.user.name)
+    // console.log('User creating event is:' + rootState.user.user.name)
     EventService.postEvent(event)
       .then(() => {
         commit('ADD_EVENT', event)
