@@ -5,6 +5,7 @@ import store from './store'
 // importing lodash methods
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import 'nprogress/nprogress.css'
 
 // require context is feature of webpack. 1) directory to search
 //2) Search subdirectories (true, false). 3) Regular expression

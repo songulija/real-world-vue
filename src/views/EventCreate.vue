@@ -50,6 +50,7 @@
 <script>
 import { mapState } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
+import NProgress from 'nprogress'
 export default {
   components: {
     Datepicker,
@@ -96,8 +97,8 @@ export default {
       }
     },
     createEvent() {
+      NProgress.start() //starting progress bar
       // dispatching 'createEvent' action, passing event(state) obj
-      console.log(this.event)
       // waiting for the response to return in dispatcher. using then
       this.$store
         .dispatch('event/createEvent', this.event)
@@ -112,6 +113,7 @@ export default {
         })
         .catch(() => {
           //now we wont push to new route or clear form.
+          NProgress.done()
         })
     },
   },

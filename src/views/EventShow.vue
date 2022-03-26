@@ -28,28 +28,13 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
 export default {
   props: {
-    id: {
-      type: [Number, String],
+    // i will get event as prop from router. becouse there is called vuex action
+    event: {
+      type: Object,
       required: true,
     },
-  },
-  computed: {
-    ...mapState({
-      // first i refering to 'event' module, then accessing event state
-      event: (state) => state.event.event,
-    }),
-  },
-  created() {
-    // dispatching 'fetchEvent' action and passing id for it
-    // with help of mapActions we dont need to dispatch action here
-    this.fetchEvent(this.id)
-  },
-  methods: {
-    // first is namespace 'event' that is needed. and second prop is array of actions to map that there are
-    ...mapActions('event', ['fetchEvent']),
   },
 }
 </script>

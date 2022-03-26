@@ -20,38 +20,59 @@
       |
       <!-- link for next page. link to same 'event-list' route.  -->
     </template>
-    <router-link
-      :to="{ name: 'event-list', query: { page: page + 1 } }"
-      rel="next"
-      >Next page</router-link
-    >
+    <tempalte v-if="hasNextPage">
+      <router-link
+        :to="{ name: 'event-list', query: { page: page + 1 } }"
+        rel="next"
+        >Next page</router-link
+      >
+    </tempalte>
   </div>
 </template>
 <script>
 import EventCard from '@/components/EventCard.vue'
 import { mapState } from 'vuex'
+import store from '@/store/index'
+
+function getPageEvents(routeTo, next) {
+  // getting current page from routeTo url query(page). or default 1
+  const currentPage = parseInt(routeTo.query.page) || 1
+  // pass page number to fetchEvents action
+  store
+    .dispatch('event/fetchEvents', {
+      page: currentPage,
+    })
+    .then(() => {
+      // once it fetched. send currentPage into the component(this component). passing to routeTo
+      routeTo.params.page = currentPage
+      next()
+    })
+}
+
 export default {
+  props: {
+    page: {
+      type: Number,
+      required: true,
+    },
+  },
   // defining imported components in 'components'. basically registering
   // components as child(this component child), allows to use it in template
   components: {
     EventCard,
   },
-
-  // lifecycle hook created. when component is created this will be called
-  created() {
-    // dispatching 'fetchEvents' action
-    this.$store.dispatch('event/fetchEvents', {
-      perPage: 3,
-      page: this.page,
-    })
+  // called before the route that renders
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next)
+  },
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next)
   },
   // getting access to state using map state that allows to map
   // state into computed properties so i can access user,categories states.
   computed: {
-    page() {
-      // localhost:8000/?page=2 getting page from url or if there is no params
-      //asume that we are on 1 page
-      return parseInt(this.$route.query.page) || 1
+    hasNextPage() {
+      return this.event.eventsTotal > this.page * this.event.perPage
     },
     ...mapState({
       // first event is refering to module name

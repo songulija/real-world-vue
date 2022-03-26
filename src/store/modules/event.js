@@ -8,6 +8,7 @@ export const state = {
   events: [],
   event: {},
   eventsTotal: 0,
+  perPage: 3,
 }
 // vuex can update/mutate the State. exporting mutations
 export const mutations = {
@@ -56,11 +57,13 @@ export const actions = {
   },
   // providing payolaod for this action. perPage and page
   // payload in Actions & Mutations can be single var OR object
-  fetchEvents({ commit, dispatch }, { perPage, page }) {
-    EventService.getEvents(perPage, page)
+  fetchEvents({ commit, dispatch, state }, { page }) {
+    // return promise from this action. so we know when date is returned
+    // and i can render template
+    return EventService.getEvents(state.perPage, page)
       .then((response) => {
-        console.log('Total events are:' + response.headers['x-total-count'])
-        commit('SET_EVENTS_TOTAL', response.headers['x-total-countx'])
+        commit('SET_EVENTS_TOTAL', response.headers['x-total-count'])
+        console.log(response.headers['x-total-countx'])
         commit('SET_EVENTS', response.data)
       })
       .catch((error) => {
@@ -80,11 +83,16 @@ export const actions = {
     // if we find this event then commit 'SET_EVENT' to mutations and pass event obj
     if (event) {
       commit('SET_EVENT', event)
+      // return event if we have one
+      return event
     } else {
       // otherwise try to fetch that 'event'
-      EventService.getEvent(id)
+      //return promise
+      return EventService.getEvent(id)
         .then((response) => {
           commit('SET_EVENT', response.data)
+          // after we do API call we need to return event
+          return response.data
         })
         .catch((error) => {
           const notification = {
