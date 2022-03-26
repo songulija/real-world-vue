@@ -6,6 +6,7 @@ import EventShow from '@/views/EventShow'
 import UserView from '@/views/UserView'
 import store from '@/store/index'
 import NProgress from 'nprogress'
+import NotFound from '@/views/NotFound'
 
 // telling vue to use router
 Vue.use(VueRouter)
@@ -39,12 +40,18 @@ const router = new VueRouter({
       component: EventShow,
       props: true,
       beforeEnter(routeTo, routeFrom, next) {
-        store.dispatch('event/fetchEvent', routeTo.params.id).then((event) => {
-          // once promise from API is resolved go to next lifecycle method
-          // for it our action must return promise. passing event as prop to that route to
-          routeTo.params.event = event
-          next()
-        })
+        store
+          .dispatch('event/fetchEvent', routeTo.params.id)
+          .then((event) => {
+            // once promise from API is resolved go to next lifecycle method
+            // for it our action must return promise. passing event as prop to that route to
+            routeTo.params.event = event
+            next()
+          })
+          .catch(() => {
+            // on error redirect to 404, and passing recourse 'event' that is missing
+            next({ name: '404', params: { resource: 'event' } })
+          })
       },
     },
     // if we want to change routes from 'about' to 'about-us'.
@@ -66,6 +73,18 @@ const router = new VueRouter({
       name: 'user',
       component: UserView,
       props: true,
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound,
+      props: true,
+    },
+    // this route will Catch all navigation that doesnt match any of listed routes
+    // passing param(as props). just to tell page what is missing
+    {
+      path: '*',
+      redirect: { name: '404', params: { resource: 'page' } },
     },
   ],
 })

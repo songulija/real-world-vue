@@ -78,7 +78,7 @@ export const actions = {
       })
   },
   // fetchEvent will take in 'commit', 'getter' from context. so i can access getters
-  fetchEvent({ commit, dispatch, getters }, id) {
+  fetchEvent({ commit, getters }, id) {
     var event = getters.getEventById(id)
     // if we find this event then commit 'SET_EVENT' to mutations and pass event obj
     if (event) {
@@ -88,22 +88,11 @@ export const actions = {
     } else {
       // otherwise try to fetch that 'event'
       //return promise
-      return EventService.getEvent(id)
-        .then((response) => {
-          commit('SET_EVENT', response.data)
-          // after we do API call we need to return event
-          return response.data
-        })
-        .catch((error) => {
-          const notification = {
-            type: 'error',
-            message: 'There was a problem fetching event: ' + error.message,
-          }
-          // dispatching notification action add & passing obj
-          //{root: true} allows dispatcher to go to root state, find notification module
-          // and run add action
-          dispatch('notification/add', notification, { root: true })
-        })
+      return EventService.getEvent(id).then((response) => {
+        commit('SET_EVENT', response.data)
+        // after we do API call we need to return event
+        return response.data
+      })
     }
   },
 }
