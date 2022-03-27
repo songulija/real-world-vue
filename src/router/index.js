@@ -7,6 +7,7 @@ import UserView from '@/views/UserView'
 import store from '@/store/index'
 import NProgress from 'nprogress'
 import NotFound from '@/views/NotFound'
+import NetworkIssue from '@/views/NetworkIssue'
 
 // telling vue to use router
 Vue.use(VueRouter)
@@ -48,9 +49,15 @@ const router = new VueRouter({
             routeTo.params.event = event
             next()
           })
-          .catch(() => {
-            // on error redirect to 404, and passing recourse 'event' that is missing
-            next({ name: '404', params: { resource: 'event' } })
+          .catch((error) => {
+            //check the error type. if its network error or 404
+            if (error.response && error.response.status === 404) {
+              // on error redirect to 404, and passing recourse 'event' that is missing
+              next({ name: '404', params: { resource: 'event' } })
+            } else {
+              //redirect to network-isue route
+              next({ name: 'network-issue' })
+            }
           })
       },
     },
@@ -79,6 +86,11 @@ const router = new VueRouter({
       name: '404',
       component: NotFound,
       props: true,
+    },
+    {
+      path: '/network-issue',
+      name: 'network-issue',
+      component: NetworkIssue,
     },
     // this route will Catch all navigation that doesnt match any of listed routes
     // passing param(as props). just to tell page what is missing

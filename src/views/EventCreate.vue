@@ -2,34 +2,53 @@
   <div>
     <h1>Create Event {{ user.name }}</h1>
     <form @submit.prevent="createEvent">
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-      </select>
+      <!--Parent listens to $emit'ed event (v-on:input)
+        code translates  to :value="event.category" @input="(value) => {event.category = value}
+        v-model will listen for @input event(by default). when it happens
+        it will take value(passed payload) and set event.category to that(passed value).
+        also if event.title has initial value we will be sending it in as prop called 'value' to BaseInput  -->
+      <BaseSelect
+        label="Select a category"
+        v-model="event.category"
+        :options="categories"
+        class="field"
+      />
+      <!-- :options is becouse i want to bind options that are passed as props to
+      categories array -->
       <h3>Name & describe your event</h3>
       <div class="field">
-        <label>Title</label>
-        <input
+        <!-- The parent can then listen to $emit'ed event using v-on:input
+        this code translates to :value="event.title" @input="(value) => {event.title = value}
+        --- under hood v-model="event.title" by default v-model will listen for @input event. when it happens
+        it will take value(passed payload) and set event.title to that(passed value).
+        also if event.title has initial value we will be sending it in as prop called 'value' to BaseInput  -->
+        <BaseInput
+          label="Title"
           v-model="event.title"
           type="text"
-          placeholder="Add an event title"
+          placeholder="Title"
+          class="field"
         />
+        <!-- i also can pass atributes just by defining them, type="text"
+        but these atributes by default inherits parent(<div type="text" placeho...) -->
       </div>
       <div class="field">
-        <label>Description</label>
-        <input
+        <BaseInput
+          label="Description"
           v-model="event.description"
           type="text"
           placeholder="Add a description"
+          class="field"
         />
       </div>
       <h3>Where is your event?</h3>
       <div class="field">
-        <label>Location</label>
-        <input
+        <BaseInput
+          label="Location"
           v-model="event.location"
           type="text"
           placeholder="Add a location"
+          class="field"
         />
       </div>
       <h3>When is your event?</h3>
@@ -38,12 +57,20 @@
         <datepicker v-model="event.date" placeholder="Select a date" />
       </div>
       <div class="field">
-        <label>Select a time</label>
-        <select v-model="event.time">
-          <option v-for="time in times" :key="time">{{ time }}</option>
-        </select>
+        <!--Parent listens to $emit'ed event (v-on:input)
+        code translates  to :value="event.time" @input="(value) => {event.time = value}
+        v-model will listen for @input event(by default). when it happens
+        it will take value(passed payload) and set event.time to that(passed value).
+        also if event.title has initial value we will be sending it in as prop called 'value' to BaseInput  -->
+        <BaseSelect
+          label="Select a time"
+          v-model="event.time"
+          :options="times"
+          class="field"
+        />
       </div>
-      <input type="submit" class="button -fill-gradient" value="Submit" />
+      <!-- <input type="submit" class="button -fill-gradient" value="Submit" /> -->
+      <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
     </form>
   </div>
 </template>
