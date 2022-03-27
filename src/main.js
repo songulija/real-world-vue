@@ -7,9 +7,14 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import 'nprogress/nprogress.css'
 import Vuelidate from 'vuelidate'
+import DateFilter from '@/filters/date'
 
 // allow to access vuelidate from every component of application
 Vue.use(Vuelidate)
+
+// registering filter as global filter. naming filter and passing filter.
+// can be used in any component that needs it
+Vue.filter('date', DateFilter)
 
 Vue.config.productionTip = false
 // require context is feature of webpack. 1) directory to search
