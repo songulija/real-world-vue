@@ -8,6 +8,7 @@ import store from '@/store/index'
 import NProgress from 'nprogress'
 import NotFound from '@/views/NotFound'
 import NetworkIssue from '@/views/NetworkIssue'
+import ExampleView from '@/views/ExampleView'
 
 // telling vue to use router
 Vue.use(VueRouter)
@@ -80,6 +81,11 @@ const router = new VueRouter({
       name: 'user',
       component: UserView,
       props: true,
+    },
+    {
+      path: '/example',
+      name: 'example',
+      component: ExampleView,
     },
     {
       path: '/404',

@@ -6,7 +6,12 @@ import store from './store'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import 'nprogress/nprogress.css'
+import Vuelidate from 'vuelidate'
 
+// allow to access vuelidate from every component of application
+Vue.use(Vuelidate)
+
+Vue.config.productionTip = false
 // require context is feature of webpack. 1) directory to search
 //2) Search subdirectories (true, false). 3) Regular expression
 //searching for files that begin 'Base' and end '.vue' or '.js'
@@ -46,7 +51,6 @@ requireComponent.keys().forEach((fileName) => {
   )
 })
 
-Vue.config.productionTip = false
 // creating new instance,adding route, store(vuex),
 // and telling to render our app App component
 // and mount it where this id 'app' is
